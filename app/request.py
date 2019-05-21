@@ -7,8 +7,8 @@ base_url = None
 #Movie = movie.Movie
 def configure_request(app):
     global api_key,base_url
-    api_key = app.config['59645e2f29e8df09dbd56681a542bc']
-    base_url = app.config['https://api.themoviedb.org/3/movie/{}?api_key={}']
+    api_key = app.config['MOVIE_API_KEY']
+    base_url = app.config['MOVIE_API_BASE_URL']
 def get_movies(category):
     '''
     Function that gets the json response to our url request
@@ -24,7 +24,6 @@ def get_movies(category):
         if get_movies_response['results']:
             movie_results_list = get_movies_response['results']
             movie_results = process_results(movie_results_list)
-
 
     return movie_results
 def process_results(movie_list):
